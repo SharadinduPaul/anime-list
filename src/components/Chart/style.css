@@ -1,0 +1,25 @@
+.custom-tooltip {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  border: 2px solid white;
+  outline: none;
+  padding: 1rem;
+}
+.custom-tooltip > .label {
+  color: var(--bg-primary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.custom-tooltip > .titles {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.custom-tooltip .title {
+  color: var(--bg-primary);
+  margin: .2rem;
+}
