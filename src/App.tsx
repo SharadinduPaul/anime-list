@@ -12,13 +12,13 @@ function App() {
   const getTopAnimes = async () => {
     const res = await fetch(GET_TOP_ANIMES);
     const resJson = await res.json();
-
+    console.log("res", resJson);
     const formatterCardList: CardProps[] = await resJson?.data?.map(
       (item: any) => ({
         rank: item?.rank,
         title: item?.title,
-        imageUrl: item?.images?.jpg?.image_url,
-        releaseDate: item?.year,
+        imageUrl: item?.images?.jpg?.large_image_url,
+        releaseDate: item?.aired?.from,
         latestDate: item?.aired?.to,
         rated: item?.rating,
       })
@@ -28,7 +28,10 @@ function App() {
       animes: number;
       titles: string[];
     }[] = [];
-    await resJson?.data?.map((item: any) => {
+    await resJson?.data?.map((item: any, index: number) => {
+      if (index >= 20) {
+        return;
+      }
       let found = false;
       formattedChartData.map((obj, index) => {
         if (obj?.year === item?.year) {

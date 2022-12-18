@@ -36,7 +36,7 @@ body {
   overflow: auto hidden;
   display: flex;
   justify-content: center;
-  padding: 10vh 0 0;
+  padding: 20vh 0 0;
 }
 ::-webkit-scrollbar {
   height: 0;

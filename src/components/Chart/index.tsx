@@ -30,7 +30,6 @@ const CustomTooltip = ({
 }) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
-    console.log("payload", payload[0].payload);
     return (
       <div className="custom-tooltip">
         <p className="label">{label ? label : "No Year Specified"}</p>
@@ -50,7 +49,7 @@ const CustomTooltip = ({
 
 export const Chart = ({ data }: ChartProps) => {
   return (
-    <ResponsiveContainer minWidth={600} height={300}>
+    <ResponsiveContainer minWidth={600} height={360}>
       <AreaChart data={data}>
         <defs>
           <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
@@ -60,7 +59,10 @@ export const Chart = ({ data }: ChartProps) => {
         </defs>
         <XAxis dataKey="year" />
         <YAxis dataKey="animes" />
-        <Tooltip content={<CustomTooltip />} />
+        <Tooltip
+          content={<CustomTooltip />}
+          wrapperStyle={{ outline: "none" }}
+        />
         <CartesianGrid strokeDasharray="4" />
         <Area
           type="monotone"

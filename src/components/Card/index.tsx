@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
+import moment from "moment";
 import "./style.css";
 
 export interface CardProps {
@@ -18,11 +19,10 @@ export const AnimeCard = ({
   latestDate = "Now",
   rated,
 }: CardProps) => {
-  const [mouseDown, setMouseDown] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const cardAnimationOptions: KeyframeAnimationOptions = {
-    duration: 800,
+    duration: 500,
     fill: "forwards",
   };
 
@@ -50,6 +50,14 @@ export const AnimeCard = ({
       });
     }
   }, []);
+
+  const releaseDateFormatted = releaseDate
+    ? moment(releaseDate).format("D MMM YYYY")
+    : "Unavailable";
+  const latestDateFormatted = latestDate
+    ? moment(latestDate).format("D MMM YYYY")
+    : "Now";
+
   return (
     <div className="anime-card-container">
       <div ref={cardRef} className="anime-card-main">
@@ -58,10 +66,10 @@ export const AnimeCard = ({
         <span>
           <h4>{title}</h4>
           <h5>
-            <span>Release:</span> {releaseDate ?? "Unknown"}
+            <span>Release:</span> {releaseDateFormatted}
           </h5>
           <h5>
-            <span>Latest:</span> {latestDate ?? "Now"}
+            <span>Latest:</span> {latestDateFormatted}
           </h5>
           <h5>
             <span>Rating:</span> {rated ?? "No ratings yet"}

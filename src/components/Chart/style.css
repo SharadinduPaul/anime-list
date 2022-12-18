@@ -8,6 +8,8 @@
   border: 2px solid white;
   outline: none;
   padding: 1rem;
+  border-radius: 10px;
+  border: 2px solid rgb(252, 80, 255);
 }
 .custom-tooltip > .label {
   color: var(--bg-primary);
